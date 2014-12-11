@@ -23,6 +23,7 @@ config(['$routeProvider', function($routeProvider) {
 	    authService.loginConfirmed(resp.data);
 	}, function () {
 	    // jsonp failed,
+	    // start window.open + postMessage
 	    $modal.open({ templateUrl: 'relog/relog.html', controller: 'RelogCtrl', backdrop: false });
 	});
     });

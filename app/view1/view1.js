@@ -9,6 +9,12 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', function($http, $scope, $window) {
+    $http.get('backend/user.php').success(function (user) {
+	$scope.user = user;
+    });
 
-}]);
+    $scope.restart = function() {
+	$window.location.reload();
+    }
+});

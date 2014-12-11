@@ -1,1 +1,7 @@
-<p>This is the partial for view 1.</p>
+<div ng-if="user">
+<p>User id: {{user.id}}</p>
+</div>
+
+<div ng-if="!user">
+  Session timeout! Please <a href="index.php">re-start application</a>
+</div>

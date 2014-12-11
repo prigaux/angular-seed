@@ -13,11 +13,18 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
-}]).run(function ($rootScope, $modal) {
+}]).run(function ($rootScope, $modal, authService, $http) {
     
     // Call when the 401 response is returned by the server
     $rootScope.$on('event:auth-loginRequired', function(rejection) {
-	$modal.open({ templateUrl: 'relog/relog.html', controller: 'RelogCtrl', backdrop: false });
+
+	// first try jsonp
+	$http.jsonp('backend/login.php?callback=JSON_CALLBACK').then(function (resp) {
+	    authService.loginConfirmed(resp.data);
+	}, function () {
+	    // jsonp failed,
+	    $modal.open({ templateUrl: 'relog/relog.html', controller: 'RelogCtrl', backdrop: false });
+	});
     });
 
 });

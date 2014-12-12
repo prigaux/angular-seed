@@ -1,3 +1,34 @@
+# angular-seed-phpCAS
+
+Cette application de démonstration est construite sur "angular-seed" qui est le squelette recommandé par l'équipe AngularJS.
+
+Quelques pages PHP très simples ont été ajouté pour montrer comment authentifier une application AngularJS sur CAS.
+
+NB : app/index.html est accessible, mais l'appli est sensée démarrer sur la page app/index.php
+
+
+## tous les commits montrent une fonctionnalité séparée.
+
+Pour bien comprendre je vous conseille de les regarder/tester l'un après l'autre
+
+* [CAS example](https://github.com/prigaux/angular-seed/commit/v1) : casification minimale, "à la main"
+* [CAS example using http-auth-interceptor](https://github.com/prigaux/angular-seed/commit/v1_1) : même chose avec un module interceptant tous les appels $http
+* [use ngRoute "resolve"](https://github.com/prigaux/angular-seed/commit/v1_2) : éviter d'afficher la page "view1" tant que l'utilisateur n'est pas authentifié
+* [replace alert with modal window from angular UI Bootstrap](https://github.com/prigaux/angular-seed/commit/v1_3) (prépare le commit suivant)
+* [add transparent relog using jsonp + CAS gateway](https://github.com/prigaux/angular-seed/commit/v1_4) : si besoin de relog, tente un login transparent sur CAS avec JSONP
+* [add relog using window.open+postMessage](https://github.com/prigaux/angular-seed/commit/v2) : remplace le relancement de l'appli (index.php) par window.open+postMessage
+
+## pour le faire fonctionner :
+
+```
+git clone --depth 4 https://github.com/prigaux/angular-seed.git angular-seed-phpCAS
+cd angular-seed-phpCAS
+bower install
+```
+
+Il faut avoir phpCAS : https://wiki.jasig.org/display/CASC/phpCAS+installation+guide
+
+
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
